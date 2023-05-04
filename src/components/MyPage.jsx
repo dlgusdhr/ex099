@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import {Row, Col, Form, Button, InputGroup} from 'react-bootstrap'
-import ModalPostcode from './ModalPostcode';
-
+import ModalPostcode from './ModalPostcode'
+import {app} from '../firebaseInit'
+import {getFirestore, getDoc, doc, addDoc, collection} from 'firebase/firestore'
 const MyPage = () => {
+    const store = getFirestore(app);
     const [fileName, setFileName] = useState('https://via.placeholder.com/200x200');
     const [form, setForm] = useState({
         email: sessionStorage.getItem('email'),
@@ -25,6 +27,12 @@ const MyPage = () => {
             ...form,
             address:address
         });
+    }
+
+    const onUpdate = async() => {
+        await store.addDoc(collection(store, 'users'));
+
+        console.log('user...........', user);
     }
 
     return (
@@ -65,7 +73,9 @@ const MyPage = () => {
                             type="file"/>
                     </div>
                     <div className='text-center my-3'>
-                        <Button className='px-5'>정보저장</Button>
+                        <Button 
+                            onClick={onUpdate}
+                            className='px-5'>정보저장</Button>
                     </div>
                 </Form>
             </Col>

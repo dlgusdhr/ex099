@@ -49,7 +49,6 @@ const LocalPage = () => {
                 </Col>
                 <Col>검색수: {total}건</Col>
             </Row>
-            <hr/>
             <Row>
                 <Col>
                     <Table striped bordered hover>
@@ -58,16 +57,16 @@ const LocalPage = () => {
                                 <td>장소명</td>
                                 <td>주소</td>
                                 <td>전화</td>
-                                <td>위치보기</td>
+                                <td width={100}>위치보기</td>
                             </tr>
                         </thead>
                         <tbody>
                            {locals.map(local=>
-                                <tr key={local.id}>
+                                <tr key={local.id} style={{fontSize:'0.8rem'}}>
                                     <td><div className='ellipsis'>{local.place_name}</div></td>
                                     <td><div className='ellipsis'>{local.address_name}</div></td>
-                                    <td>{local.phone}</td>
-                                    <td><Local local={local}/></td>
+                                    <td><div className='ellipsis'></div>{local.phone}</td>
+                                    <td className='text-center'><Local local={local}/></td>
                                 </tr>
                             )}
                         </tbody>

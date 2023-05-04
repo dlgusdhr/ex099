@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react'
-import { Button, Col, Row, Form, Card } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { Button, Col, Row, Form, Card, InputGroup } from 'react-bootstrap'
 import Book from './Book';
 
 const BookPage = () => {
@@ -41,19 +41,22 @@ const BookPage = () => {
             <Row>
                 <Col lg={4} xs={6}>
                     <Form onSubmit={onSubmit}>
-                        <Form.Control  
-                            onChange={(e)=>setQuery(e.target.value)}
-                            placeholder="검색어" value={query}/>
+                        <InputGroup>
+                            <Form.Control  
+                                onChange={(e)=>setQuery(e.target.value)}
+                                placeholder="검색어" value={query}/>
+                            <InputGroup.Text>검색</InputGroup.Text>
+                        </InputGroup>
                     </Form>
                 </Col>
             </Row>
             <Row>
                 {list.map(book=>
-                    <Col key={book.isbn} lg={3} xs={6} className="my-2">
+                    <Col key={book.isbn} lg={3} md={3} xs={6} className="my-2">
                         <Card>
                             <Card.Body>
                                 <img src={book.thumbnail}/>
-                                <div className='ellipsis'>{book.title}</div>
+                                <div className='ellipsis mt-2' style={{fontSize:'0.8rem'}}>{book.title}</div>
                                 <Book book={book}/>
                             </Card.Body>
                         </Card>

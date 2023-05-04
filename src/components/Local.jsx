@@ -11,7 +11,7 @@ const Local = ({ local }) => {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="primary" onClick={handleShow} className='btn-sm'>
                 위치보기
             </Button>
 

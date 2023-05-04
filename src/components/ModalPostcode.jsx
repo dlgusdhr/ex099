@@ -17,7 +17,7 @@ const ModalPostcode = ({onPostcode}) => {
     return (
         <>
             <Button variant="primary" onClick={handleShow} className='mt-2'>
-                주소검색
+                검색
             </Button>
 
             <Modal

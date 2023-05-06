@@ -5,7 +5,7 @@ import {app} from '../firebaseInit'
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore'
 import { getStorage, uploadBytes, ref, getDownloadURL } from 'firebase/storage'
 
-const MyPage = ({ history }) => {
+const MyPage = ({history}) => {
     const [loading, setLoading] = useState(false);
     const db = getFirestore(app);
     const storage = getStorage(app);
